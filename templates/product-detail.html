@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/css?family=Bangers&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Shade&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Spectral:500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../static/styles/style.css" />
+    <script src="https://kit.fontawesome.com/4797728da6.js" crossorigin="anonymous"></script>
+    <title>nikefanboy - ngocphucdo</title>
+
+</head>
+<style>
+
+</style>
+
+<body>
+    <!-- this is header -->
+
+    <!-- this is logobar -->
+    <div class="">
+        <div class=>
+            <p class="logo">nike fan boy</p>
+        </div>
+    </div>
+    <!-- this is navbar -->
+    <div class="nav">
+        <nav>
+            <ul>
+                <li class=""><a href="http://127.0.0.1:5000/">Trang chủ</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn">Giày</button>
+                    <div class="dropdown-content">
+                        <a href="http://127.0.0.1:5000/category/nike">Nike</a>
+                        <a href="http://127.0.0.1:5000/category/adidas">Adidas</a>
+                        <a href="http://127.0.0.1:5000/category/jordan">Jordan</a>
+                        <a class="new-blance" href="http://127.0.0.1:5000/category/newbalance">New Blance</a>
+                    </div>
+                </div>
+                <li class=""><a href="#aboutUs">Về chúng tôi</a></li>
+                <li class=""><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- this is product-detail thing -->
+    <div class="container">
+        <div class="row main-product-detail ">
+            <div class="left-product-detail col-lg-6">
+                <img src="{{product.image}}" alt="">
+            </div>
+            <div class="right-product-detail col-lg-6">
+                <div class="">
+                    <h1 class="">{{product.name}}</h1>
+                    <span id="">SKU: {{product.code}}</span>
+                </div>
+                <button class="cta-buyThings" id="button" data-toggle="modal" data-target=".bd-example-modal-lg"><span>
+                        <a id="myBtn" class="cta-style">Mua hàng</a> </span></button>
+                <div class="product-description">
+                    <div class="title-bl">
+                        <h2>Mô tả</h2>
+                    </div>
+                    <div class="description-content">
+                        <div class="description-productdetail">
+                            {{product.detail }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- this is modal popup -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <table class="popup-table" style=" margin-top: 200px;">
+            <form>
+                <tr>
+                    <td colspan="2"><span class="close">&times;</span></td>
+                </tr>
+                <tr>
+                    <td>Tên khách hàng</td>
+                    <td><input type="text" placeholder="Ngoc Phuc Do" name='customer_name' required></td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại</td>
+                    <td><input type="text" placeholder="0986280613" name="customer_phone" required></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" placeholder="taken.jb@gmail.com" name='customer_email' required></td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ nhận hàng</td>
+                    <td><input type="text" placeholder="Kim Nguu, Hai Ba Trung, Ha Noi" name="customer_address"
+                            required></td>
+                </tr>
+                <tr>
+                    <td>Hình thức thanh toán</td>
+                    <td>
+                        <input type="radio" name="shipping" style="width: 20px;height: 20px;" checked> Chuyển khoản
+                        <br>
+                        <input type="radio" name="shipping" style="width: 20px;height: 20px;"> COD (Cash On Deliverly)
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=2><button class="btnPopUp" type="submit">Mua hàng</button></td>
+                </tr>
+            </form>
+        </table>
+
+    </div>
+
+    <!-- this is thankyou section -->
+    <div class="anim" data-delay="0.2s">
+        <h1 class="thankyou">Thank you for coming here.</h1>
+    </div>
+</body>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    const images = document.querySelectorAll(".anim");
+
+    observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.intersectionRatio > 0) {
+                entry.target.style.animation =
+                    `anim1 2s ${entry.target.dataset.delay} forwards ease-out`;
+            } else {
+                entry.target.style.animation = "none";
+            }
+        });
+    });
+
+    images.forEach(image => {
+        observer.observe(image);
+    });
+
+</script>
+
+</html>
