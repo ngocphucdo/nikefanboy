@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/png" href="../static/images/favicon.png">
+    <title>Manage</title>
+</head>
+
+<body>
+    <table border="1px solid black">
+        <thead>
+            <th>STT</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Code</th>
+            <th>Category</th>
+            <th>CRUD</th>
+        </thead>
+        <tbody>
+            {% for product in all_products %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td style="width: 300px;"><img style="width: 30%;" src="{{product.image}}"></td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.code }}</td>
+                <td>{{ product.cate_name }}</td>
+                <td>
+                    <a href="#">Update</a>
+                    <a href="{{ url_for('delete', id=product.id)}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+
+</html>

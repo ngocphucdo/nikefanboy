@@ -18,6 +18,9 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/4797728da6.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../static/images/favicon.png">
+
     <title>Upload</title>
 
 </head>
@@ -30,20 +33,15 @@
         <p>Image</p>
         <input type="file" name="image" id="" required>
         <p>Name</p>
-        <input type="text" name="name" value="" required>
+        <input type="text" onkeyup="this.value = this.value.toUpperCase();" name="name" value="" required>
         <p>Price</p>
-        <input type="text" name="price" value="" required>
+        <input type="text" class="number" name="price" required>
         <p>Code</p>
-        <input type="text" name="code" value="" required>
+        <input type="text" onkeyup="this.value = this.value.toUpperCase();" name="code" value="" required>
         <p>Category</p>
         <input type="text" name="cate_name" value="" placeholder="'nike' or 'adidas' or 'jordan' or 'newbalance'"
-        required style="width: 356px;">
-        <!-- <select name="cate_name" id="" required style="width: 10%; font-size: 120%;">
-            <option value="nike">Nike</option>
-            <option value="adidas">Adidas</option>
-            <option value="jordan">Jordan</option>
-            <option value="newblance">New Blance</option>
-        </select> -->
+            required style="width: 356px;">
+
         <p>Detail</p>
         <textarea name="detail" rows="8" cols="80" required></textarea>
         <hr>
@@ -51,5 +49,20 @@
     </form>
 
 </body>
+<script>
+    $('input.number').keyup(function (event) {
+
+        // skip for arrow keys
+        if (event.which >= 37 && event.which <= 40) return;
+
+        // format number
+        $(this).val(function (index, value) {
+            return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                ;
+        });
+    });
+</script>
 
 </html>
