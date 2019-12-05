@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update Product</title>
+</head>
+
+<body>
+    <form action="" method="POST">
+        <table border="1px solid black">
+            <thead>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Code</th>
+                <th>Category</th>
+                <th>CRUD</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="width: 300px;"><img style="width: 30%;" src="{{updateProduct.image}}"></td>
+                    <td><input style="width: 300px;" type="text" name="name" value="{{ updateProduct.name }}"></td>
+                    <td><input type="text" name="price" value="{{ updateProduct.price }}"></td>
+                    <td><input type="text" name="code" value="{{ updateProduct.code }}"></td>
+                    <td><input type="text" name="cate_name" value="{{ updateProduct.cate_name }}"></td>
+                    <td>
+                        <button type="submit">Update</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+</body>
+
+</html>

@@ -57,7 +57,7 @@ def upload():
 @app.route('/admin/manage')
 def manage():
     products = Product.objects()
-    return render_template('manage.html', all_products=products)
+    return render_template('admin-manage.html', all_products=products)
 
 
 @app.route('/admin/delete/<id>')
@@ -66,26 +66,24 @@ def delete(id):
     product_to_delete.delete()
     return redirect(url_for('index'))
 
-    # @app.route('customer_manage', methods=['GET', 'POST'])
-    # def manage():
-    #     if request.method == "GET":
-    #         return render_template("customer_manage.html")
-    #     elif request.method == "POST":
-    #
-    #         form = request.form
-    #         customer_name = form['customer_name']
-    #         customer_phone = form['customer_phone']
-    #         customer_email = form['customer_email']
-    #         customer_address = form['customer_address']
-    #         customer_payments = form['customer_payments']
-    #
-    #         new_customer = manage(customer_name=customer_name,
-    #                               customer_phone=customer_phone,
-    #                               customer_email=customer_email,
-    #                               customer_address=customer_address,
-    #                               customer_payments=customer_payments)
-    #         new_customer.save()
-    #         return redirect(url_for('customer_manage'))
+
+@app.route('/admin/update/<id>', methods=['GET', 'POST'])
+def update(id):
+    updateProduct = Product.objects.get(id=id)
+    products = Product.objects()
+    if request.method == "GET":
+        return render_template('update-product.html', updateProduct=updateProduct)
+    elif request.method == "POST":
+        form = request.form
+
+        name = form['name']
+        price = form['price']
+        code = form['code']
+        cate_name = form['cate_name']
+
+        updateProduct.update(set__name=name, set__price=price,
+                             set__code=code, set__cate_name=cate_name)
+    return render_template('admin-manage.html', all_products=products)
 
 
 if __name__ == '__main__':
